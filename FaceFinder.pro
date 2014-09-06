@@ -16,7 +16,9 @@ SOURCES += main.cpp\
         mainwindow.cpp
 
 HEADERS  += mainwindow.h \
-    VideoProcessor.hpp
+    VideoProcessor.hpp \
+    FaceDetection.hpp \
+    FGSegmentation.hpp
 
 FORMS    += mainwindow.ui
 

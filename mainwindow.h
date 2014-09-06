@@ -4,12 +4,15 @@
 #include <QMainWindow>
 #include <QFileDialog>
 #include <QMessageBox>
+#include <QValidator>
 
 #include "VideoProcessor.hpp"
+#include "FGSegmentation.hpp"
+#include "FaceDetection.hpp"
 
 namespace Ui {
     class MainWindow;
-    }
+}
 
 class MainWindow : public QMainWindow
 {
@@ -24,7 +27,15 @@ public slots:
     void process();
 private:
     Ui::MainWindow *ui;
-    VideoProcessor VP;
+    VideoProcessor *VP;
+    FaceDetection FD;
+    FGSegmentation *FGS;
+    std::vector<cv::Rect> ROIs,faces;
+    cv::Mat tmpFace;
+    int faceId;
+    QImage img;
+    bool isProcessing,isAbort;
+    QIntValidator *jumpVal, *sizeVal;
 };
 
 #endif // MAINWINDOW_H

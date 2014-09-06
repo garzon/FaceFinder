@@ -9,6 +9,7 @@ public:
     const std::string _input;
 
     int fps,frameId;
+    double total;
 
     // -------------- error classes -------------------
     class Error{
@@ -34,6 +35,7 @@ public:
             if(!capture.open(_input)) throw InputError();
             fps=capture.get(CV_CAP_PROP_FPS);
         }
+        total=capture.get(CV_CAP_PROP_FRAME_COUNT);
     }
 
     cv::Mat read(){
